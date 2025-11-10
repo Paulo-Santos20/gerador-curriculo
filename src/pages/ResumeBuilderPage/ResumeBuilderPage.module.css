@@ -1,18 +1,18 @@
 .builderPage {
   display: flex;
-  flex-direction: column; /* Mobile-First: colunas empilhadas */
+  flex-direction: column; 
   width: 100%;
   min-height: 100%;
+  /* Remova 'position: relative' se estiver aqui */
 }
 
-/* Coluna do Formulário */
+/* ... (as classes .formColumn, .header, .title, .previewColumn, .previewWrapper não mudam) ... */
 .formColumn {
   width: 100%;
   padding: var(--spacing-lg);
   background-color: var(--background-light);
-  order: 2; /* Formulário vem depois da pré-visualização no mobile */
+  order: 2; 
 }
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -21,14 +21,11 @@
   padding-bottom: var(--spacing-md);
   border-bottom: 1px solid var(--background-medium);
 }
-
 .title {
   font-size: 1.75rem;
   color: var(--text-color-primary);
   margin-bottom: var(--spacing-lg);
 }
-
-/* Coluna da Pré-visualização */
 .previewColumn {
   width: 100%;
   padding: var(--spacing-lg);
@@ -36,51 +33,73 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  order: 1; /* Pré-visualização vem primeiro no mobile */
+  order: 1; 
 }
-
 .previewWrapper {
   width: 100%;
-  max-width: 420px; /* Tamanho bom para A4 no mobile */
+  max-width: 420px; 
   margin: 0 auto;
-  
-  /* Mantém a proporção A4 (210/297) */
   aspect-ratio: 210 / 297; 
-
-  /* Adiciona escala para caber */
   transform: scale(1); 
   transform-origin: top center;
   box-shadow: var(--shadow-lg);
 }
 
+
 /* Desktop: Layout de 2 colunas */
 @media (min-width: 1024px) {
+  /* ... (as classes .builderPage, .formColumn, .previewColumn, .previewWrapper não mudam) ... */
   .builderPage {
-    flex-direction: row; /* Layout lado a lado */
-    height: calc(100vh - 120px); /* Altura total (menos header/footer) */
+    flex-direction: row; 
+    height: calc(100vh - 120px); 
   }
-
   .formColumn {
     width: 50%;
-    order: 1; /* Formulário na esquerda */
-    overflow-y: auto; /* Scroll apenas no formulário */
+    order: 1; 
+    overflow-y: auto; 
     padding: var(--spacing-xl);
   }
-
   .previewColumn {
     width: 50%;
-    order: 2; /* Preview na direita */
-    overflow-y: auto; /* Scroll apenas no preview */
+    order: 2; 
+    overflow-y: auto; 
     padding: var(--spacing-xl);
     align-items: center;
   }
-
   .previewWrapper {
-    /* Ajusta a escala para caber bem na coluna */
     max-width: none;
     width: 100%; 
     max-height: 100%;
-    transform: scale(0.7); /* Ajuste a escala conforme necessário */
+    transform: scale(0.7); /* Este é o estilo de TELA */
     transform-origin: center center;
+  }
+}
+
+/* --- ATUALIZAÇÃO COMPLETA AQUI --- */
+
+/* 1. A ÁREA DE IMPRESSÃO ESCONDIDA */
+/* A forma mais simples de a esconder: não a mostre. */
+.printableArea {
+  display: none;
+}
+
+
+/* 2. REGRAS DE IMPRESSÃO */
+@media print {
+  /* 2.1. Esconda TUDO o que está visível no ecrã */
+  .formColumn,
+  .previewColumn {
+    display: none !important;
+  }
+
+  /* 2.2. Mostre APENAS a área de impressão escondida */
+  .printableArea {
+    display: block !important; /* Faz o div aparecer */
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 210mm !important;  /* Força o tamanho A4 */
+    height: 297mm !important; /* Força o tamanho A4 */
+    overflow: visible !important;
   }
 }

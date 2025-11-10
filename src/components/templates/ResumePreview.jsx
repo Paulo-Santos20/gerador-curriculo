@@ -1,16 +1,14 @@
-import React, { forwardRef } from 'react';
+import React from 'react'; // 1. Removido 'forwardRef'
 import { useResume } from '../../context/ResumeContext';
 import TemplateModern from './TemplateModern';
 import TemplateClassic from './TemplateClassic';
 import TemplateMinimalist from './TemplateMinimalist';
-// --- NOVOS IMPORTS ---
 import TemplateExecutivo from './TemplateExecutivo';
 import TemplateProfissional from './TemplateProfissional';
-// --- FIM NOVOS IMPORTS ---
-
 import styles from './ResumePreview.module.css';
 
-const ResumePreview = forwardRef((props, ref) => {
+// 2. Não é mais um forwardRef, é um componente funcional normal
+const ResumePreview = () => {
   const { resumeData, template, fontSettings } = useResume();
   const data = resumeData;
 
@@ -22,12 +20,10 @@ const ResumePreview = forwardRef((props, ref) => {
         return <TemplateModern data={data} />;
       case 'minimalist':
         return <TemplateMinimalist data={data} />;
-      // --- NOVOS CASES ---
       case 'executivo':
         return <TemplateExecutivo data={data} />;
       case 'profissional':
         return <TemplateProfissional data={data} />;
-      // --- FIM NOVOS CASES ---
       default:
         return <TemplateModern data={data} />;
     }
@@ -43,10 +39,10 @@ const ResumePreview = forwardRef((props, ref) => {
   };
 
   return (
-    <div ref={ref} className={styles.previewContainer} style={fontStyleVariables}>
+    <div className={styles.previewContainer} style={fontStyleVariables}>
       {renderTemplate()}
     </div>
   );
-});
+};
 
-export default ResumePreview;
+export default ResumePreview; // 4. Exportação normal
