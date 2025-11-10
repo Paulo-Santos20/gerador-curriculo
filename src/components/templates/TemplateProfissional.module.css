@@ -1,4 +1,3 @@
-/* Estilos para TemplateProfissional (Baseado em Rafhaela) */
 .profissional {
   width: 100%;
   height: 100%;
@@ -15,19 +14,19 @@
 }
 
 .name {
-  font-family: var(--font-heading-family);
-  font-size: var(--font-size-name);
   font-weight: 700;
   color: #111;
   margin-bottom: 4px;
+  font-family: var(--font-heading-family);
+  font-size: var(--font-size-name);
 }
 
 .title {
-  font-family: var(--font-heading-family);
-  font-size: var(--font-size-item-title);
   font-weight: 600;
   color: #333;
   margin-bottom: 8px;
+  font-family: var(--font-heading-family);
+  font-size: var(--font-size-item-title);
 }
 
 .address {
@@ -42,13 +41,13 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   gap: 8px;
-  font-size: 0.95rem; /* Um pouco menor */
+  font-size: 0.95rem;
   color: #555;
   margin-bottom: 4px;
 }
 
 .links {
-  color: var(--primary-color);
+  color: var(--template-accent-color); /* ATUALIZADO */
   font-weight: 600;
 }
 
@@ -57,20 +56,20 @@
 }
 
 .sectionTitle {
-  font-family: var(--font-heading-family);
-  font-size: var(--font-size-section-title);
   font-weight: 700;
   color: #333;
   border-bottom: 1px solid #ccc;
   padding-bottom: 6px;
   margin-bottom: 12px;
   text-transform: uppercase;
+  font-family: var(--font-heading-family);
+  font-size: var(--font-size-section-title);
 }
 
 .summary {
-  font-size: var(--font-size-body);
   font-style: italic;
   white-space: pre-line;
+  font-size: var(--font-size-body);
 }
 
 .item {
@@ -78,24 +77,24 @@
 }
 
 .itemTitle {
+  font-weight: 700;
   font-family: var(--font-heading-family);
   font-size: var(--font-size-item-title);
-  font-weight: 700;
 }
 
 .itemSubtitle {
-  font-size: var(--font-size-body);
   font-weight: 600;
   color: #555;
   margin-bottom: 2px;
+  font-size: var(--font-size-body);
 }
 
 .itemSubtitleLink {
-  font-size: 1rem;
   font-weight: 600;
-  color: var(--primary-color);
+  color: var(--template-accent-color); /* ATUALIZADO */
   margin-bottom: 6px;
   word-break: break-all;
+  font-size: var(--font-size-body);
 }
 
 .itemDate {
@@ -106,12 +105,11 @@
 }
 
 .itemDesc {
-  font-size: var(--font-size-body);
   color: #555;
   white-space: pre-line;
+  font-size: var(--font-size-body);
 }
 
-/* Layout em 3 colunas para habilidades */
 .skillsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -123,11 +121,11 @@
 }
 
 .skillCategoryTitle {
-  font-family: var(--font-heading-family);
-  font-size: var(--font-size-item-title);
   font-weight: 700;
   color: #333;
   margin-bottom: 8px;
+  font-family: var(--font-heading-family);
+  font-size: var(--font-size-item-title);
 }
 
 .list {

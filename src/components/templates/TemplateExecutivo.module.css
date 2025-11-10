@@ -1,4 +1,3 @@
-/* Estilos para TemplateExecutivo (Baseado em Paulo Santos) */
 .executivo {
   width: 100%;
   height: 100%;
@@ -15,11 +14,11 @@
 }
 
 .name {
-  font-family: var(--font-heading-family);
-  font-size: var(--font-size-name);
   font-weight: 700;
   color: #111;
   margin-bottom: 4px;
+  font-family: var(--font-heading-family);
+  font-size: var(--font-size-name);
 }
 
 .address {
@@ -35,13 +34,13 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   gap: 8px;
-  font-size: 0.95rem; /* Um pouco menor */
+  font-size: 0.95rem;
   color: #555;
   margin-bottom: 4px;
 }
 
 .links {
-  color: var(--primary-color);
+  color: var(--template-accent-color); /* ATUALIZADO */
   font-weight: 600;
 }
 
@@ -50,14 +49,14 @@
 }
 
 .sectionTitle {
-  font-family: var(--font-heading-family);
-  font-size: var(--font-size-section-title);
   font-weight: 700;
   color: #333;
-  border-bottom: 2px solid var(--primary-color);
+  border-bottom: 2px solid var(--template-accent-color); /* ATUALIZADO */
   padding-bottom: 4px;
   margin-bottom: 12px;
   text-transform: uppercase;
+  font-family: var(--font-heading-family);
+  font-size: var(--font-size-section-title);
 }
 
 .summary {
@@ -77,9 +76,9 @@
 }
 
 .itemTitle {
+  font-weight: 600;
   font-family: var(--font-heading-family);
   font-size: var(--font-size-item-title);
-  font-weight: 600;
 }
 
 .itemDate {
@@ -89,32 +88,32 @@
 }
 
 .itemSubtitle {
-  font-family: var(--font-heading-family);
-  font-size: var(--font-size-item-title);
   font-weight: 600;
   color: #444;
   margin-bottom: 4px;
+  font-family: var(--font-heading-family);
+  font-size: var(--font-size-item-title);
 }
 
 .itemSubtitleLink {
-  font-size: 1rem;
   font-weight: 600;
-  color: var(--primary-color);
+  color: var(--template-accent-color); /* ATUALIZADO */
   margin-bottom: 6px;
   word-break: break-all;
+  font-size: var(--font-size-body);
 }
 
 .itemDesc {
-  font-size: var(--font-size-body);
   color: #555;
   white-space: pre-line;
+  font-size: var(--font-size-body);
 }
 
 .skillsList {
   list-style-type: none;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+  grid-template-columns: repeat(2, 1fr);
   gap: 4px 12px;
   font-size: var(--font-size-body);
 }
@@ -124,10 +123,9 @@
   padding-left: 16px;
 }
 
-/* Criando um "bullet" customizado */
 .skillsList li::before {
   content: '•';
-  color: var(--primary-color);
+  color: var(--template-accent-color); /* ATUALIZADO */
   position: absolute;
   left: 0;
   top: 0;

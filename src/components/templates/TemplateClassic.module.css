@@ -3,9 +3,9 @@
   height: 100%;
   padding: 24px;
   color: #222;
-  background-color: #ffffff;  
+  background-color: #ffffff;
   font-family: var(--font-body-family);
-  font-size: var(--font-size-body); 
+  font-size: var(--font-size-body);
 }
 
 .header {
@@ -16,21 +16,19 @@
 }
 
 .name {
-  font-size: 3rem;
+  font-size: var(--font-size-name);
   font-weight: 700;
   color: #111;
   margin-bottom: 4px;
-  font-family: var(--font-heading-family); 
-  font-size: var(--font-size-name);
+  font-family: var(--font-heading-family);
 }
 
 .title {
-  font-size: 1.5rem;
+  font-size: var(--font-size-item-title);
   font-weight: 400;
   color: #444;
   margin-bottom: 12px;
-  font-family: var(--font-heading-family); 
-  font-size: var(--font-size-item-title);
+  font-family: var(--font-heading-family);
 }
 
 .contactInfo,
@@ -39,15 +37,14 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 8px;
-  font-size: 0.95rem;
+  font-size: var(--font-size-body);
   color: #555;
   margin-bottom: 4px;
-  font-family: var(--font-body-family); 
-  font-size: var(--font-size-body);
+  font-family: var(--font-body-family);
 }
 
 .links {
-  color: var(--primary-color);
+  color: var(--template-accent-color); /* ATUALIZADO */
   font-weight: 600;
 }
 
@@ -56,22 +53,20 @@
 }
 
 .sectionTitle {
-  font-size: 1.4rem;
+  font-size: var(--font-size-section-title);
   font-weight: 600;
   color: #333;
   border-bottom: 2px solid #eee;
   padding-bottom: 4px;
   margin-bottom: 12px;
   text-transform: uppercase;
-  font-family: var(--font-heading-family); 
-  font-size: var(--font-size-section-title);
+  font-family: var(--font-heading-family);
 }
 
 .summary {
-  font-size: 1rem;
+  font-size: var(--font-size-body);
   white-space: pre-line;
-  font-family: var(--font-body-family); 
-  font-size: var(--font-size-section-title);
+  font-family: var(--font-body-family);
 }
 
 .item {
@@ -86,40 +81,40 @@
 }
 
 .itemTitle {
-  font-size: 1.15rem;
+  font-size: var(--font-size-item-title);
   font-weight: 700;
-  font-family: var(--font-heading-family); /* Título */
+  font-family: var(--font-heading-family);
 }
 
 .itemDate {
-  font-size: 0.9rem;
+  font-size: 0.9rem; /* Ligeiramente mais pequeno */
   font-weight: 500;
   color: #666;
-  font-family: var(--font-body-family); /* Corpo */
+  font-family: var(--font-body-family);
 }
 
 .itemSubtitle {
-  font-size: 1rem;
+  font-size: var(--font-size-body);
   font-weight: 600;
   color: #444;
   margin-bottom: 6px;
-  font-family: var(--font-body-family); /* Corpo */
+  font-family: var(--font-body-family);
 }
 
 .itemSubtitleLink {
-  font-size: 1rem;
+  font-size: var(--font-size-body);
   font-weight: 600;
-  color: var(--primary-color);
+  color: var(--template-accent-color); /* ATUALIZADO */
   margin-bottom: 6px;
   word-break: break-all;
-  font-family: var(--font-body-family); /* Corpo */
+  font-family: var(--font-body-family);
 }
 
 .itemDesc {
-  font-size: 0.95rem;
+  font-size: var(--font-size-body);
   color: #333;
   white-space: pre-line;
-  font-family: var(--font-body-family); /* Corpo */
+  font-family: var(--font-body-family);
 }
 
 .grid {
@@ -130,19 +125,10 @@
 
 .list {
   list-style-position: inside;
-  font-size: 1rem;
-  font-family: var(--font-body-family); 
   font-size: var(--font-size-body);
+  font-family: var(--font-body-family);
 }
 
 .list li {
   margin-bottom: 4px;
-}
-
-.itemDate,
-.itemSubtitle,
-.itemSubtitleLink,
-.itemDesc {
-  font-family: var(--font-body-family);
-  font-size: var(--font-size-body); 
 }

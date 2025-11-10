@@ -1,0 +1,59 @@
+.formGroup {
+  margin-bottom: var(--spacing-md);
+  width: 100%;
+}
+
+.label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-color-secondary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--background-medium);
+  border-radius: var(--border-radius-sm);
+  background-color: var(--surface-color);
+}
+
+.input {
+  /* Remove a aparência padrão */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  
+  width: 40px;
+  height: 25px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Estiliza a "caixa" do seletor de cor */
+.input::-webkit-color-swatch-wrapper {
+  padding: 0;
+  border-radius: var(--border-radius-sm);
+}
+.input::-webkit-color-swatch {
+  border: 1px solid var(--background-medium);
+  border-radius: var(--border-radius-sm);
+}
+
+/* Para Firefox */
+.input::-moz-color-swatch {
+  border: 1px solid var(--background-medium);
+  border-radius: var(--border-radius-sm);
+}
+
+.hexValue {
+  font-family: monospace;
+  font-size: 1rem;
+  color: var(--text-color-primary);
+}

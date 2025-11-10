@@ -1,4 +1,4 @@
-import React from 'react'; // 1. Removido 'forwardRef'
+import React from 'react';
 import { useResume } from '../../context/ResumeContext';
 import TemplateModern from './TemplateModern';
 import TemplateClassic from './TemplateClassic';
@@ -7,9 +7,8 @@ import TemplateExecutivo from './TemplateExecutivo';
 import TemplateProfissional from './TemplateProfissional';
 import styles from './ResumePreview.module.css';
 
-// 2. Não é mais um forwardRef, é um componente funcional normal
 const ResumePreview = () => {
-  const { resumeData, template, fontSettings } = useResume();
+  const { resumeData, template, fontSettings, sectionVisibility } = useResume();
   const data = resumeData;
 
   const renderTemplate = () => {
@@ -29,6 +28,7 @@ const ResumePreview = () => {
     }
   };
 
+  // --- ATUALIZAÇÃO AQUI ---
   const fontStyleVariables = {
     '--font-heading-family': fontSettings.heading,
     '--font-body-family': fontSettings.body,
@@ -36,7 +36,9 @@ const ResumePreview = () => {
     '--font-size-section-title': fontSettings.sizeSectionTitle,
     '--font-size-item-title': fontSettings.sizeItemTitle,
     '--font-size-body': fontSettings.sizeBody,
+    '--template-accent-color': fontSettings.accentColor, // NOVO
   };
+  // --- FIM DA ATUALIZAÇÃO ---
 
   return (
     <div className={styles.previewContainer} style={fontStyleVariables}>
@@ -45,4 +47,4 @@ const ResumePreview = () => {
   );
 };
 
-export default ResumePreview; // 4. Exportação normal
+export default ResumePreview;

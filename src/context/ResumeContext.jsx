@@ -1,25 +1,12 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 
-// Dados iniciais para o estado do currículo
+// ... (initialResumeData) ...
 const initialResumeData = {
-  personalInfo: {
-    name: "",
-    title: "",
-    email: "",
-    phone: "",
-    address: "",
-    linkedIn: "",
-    portfolio: "",
-  },
-  summary: "",
-  experience: [],
-  education: [],
-  skills: [],
-  languages: [],
-  projects: [],
+  personalInfo: { name: "", title: "", email: "", phone: "", address: "", linkedIn: "", portfolio: "" },
+  summary: "", experience: [], education: [], certifications: [], skills: [], languages: [], projects: [],
 };
 
-// Estado inicial das fontes
+// --- ATUALIZAÇÃO AQUI ---
 const initialFontSettings = {
   heading: "'Georgia', var(--font-secondary)",
   body: "'Inter', var(--font-primary)",
@@ -27,66 +14,56 @@ const initialFontSettings = {
   sizeSectionTitle: '1.4rem',
   sizeItemTitle: '1.15rem',
   sizeBody: '1rem',
+  accentColor: '#005f73' // Cor de destaque padrão (o nosso azul escuro)
 };
+// --- FIM DA ATUALIZAÇÃO ---
 
-// --- NOVA FUNÇÃO ---
-// Helper para carregar o estado do localStorage
-// Isso garante que o localStorage só seja lido UMA VEZ no carregamento.
+// --- ATUALIZAÇÃO AQUI ---
+// Funde o estado inicial com os dados salvos
 const loadState = (key, initialState) => {
   try {
     const savedData = localStorage.getItem(key);
     if (savedData) {
-      return JSON.parse(savedData);
+      const parsedData = JSON.parse(savedData);
+      // Funde o inicial com o salvo para garantir que novas chaves existam
+      return { ...initialState, ...parsedData }; 
     }
   } catch (error) {
     console.error(`Falha ao carregar ${key} do localStorage`, error);
   }
   return initialState;
 };
-// --- FIM DA NOVA FUNÇÃO ---
+// --- FIM DA ATUALIZAÇÃO ---
 
-// 1. Criar o Contexto
+const initialSectionVisibility = {
+  summary: true, experience: true, education: true,
+  certifications: true, skills: true, languages: true, projects: true,
+};
+
 const ResumeContext = createContext();
 
-// 2. Criar o Provedor (Provider)
 export const ResumeProvider = ({ children }) => {
   const [page, setPage] = useState('select');
   const [template, setTemplate] = useState('modern');
-
-  // --- ATUALIZAÇÃO AQUI ---
-  // Os 'useStates' agora usam a função 'loadState' para
-  // carregar dados salvos ou usar o valor inicial.
   const [resumeData, setResumeData] = useState(() => loadState('resumeData', initialResumeData));
   const [fontSettings, setFontSettings] = useState(() => loadState('fontSettings', initialFontSettings));
-  // --- FIM DA ATUALIZAÇÃO ---
+  const [sectionVisibility, setSectionVisibility] = useState(() => loadState('sectionVisibility', initialSectionVisibility));
 
+  // ... (useEffects) ...
+  useEffect(() => { localStorage.setItem('resumeData', JSON.stringify(resumeData)); }, [resumeData]);
+  useEffect(() => { localStorage.setItem('fontSettings', JSON.stringify(fontSettings)); }, [fontSettings]);
+  useEffect(() => { localStorage.setItem('sectionVisibility', JSON.stringify(sectionVisibility)); }, [sectionVisibility]);
 
-  // --- NOVO 'useEffect' PARA SALVAR DADOS ---
-  // Este hook é acionado sempre que 'resumeData' muda
-  useEffect(() => {
-    try {
-      localStorage.setItem('resumeData', JSON.stringify(resumeData));
-    } catch (error) {
-      console.error("Falha ao salvar 'resumeData' no localStorage", error);
-    }
-  }, [resumeData]);
-
-  // Este hook é acionado sempre que 'fontSettings' muda
-  useEffect(() => {
-    try {
-      localStorage.setItem('fontSettings', JSON.stringify(fontSettings));
-    } catch (error) {
-      console.error("Falha ao salvar 'fontSettings' no localStorage", error);
-    }
-  }, [fontSettings]);
-  // --- FIM DOS NOVOS 'useEffect's ---
-
-
-  // --- (Todas as funções de handler permanecem as mesmas) ---
+  // O handleFontChange genérico já funciona para 'accentColor'
   const handleFontChange = (field, value) => {
     setFontSettings(prev => ({ ...prev, [field]: value }));
   };
 
+  const handleSectionToggle = (sectionName) => {
+    setSectionVisibility(prev => ({ ...prev, [sectionName]: !prev[sectionName] }));
+  };
+
+  // ... (handleChange, handleSectionChange, addSectionItem, removeSectionItem, selectTemplate, goHome) ...
   const handleChange = (e) => {
     const { name, value, dataset } = e.target;
     if (dataset.section) {
@@ -95,7 +72,6 @@ export const ResumeProvider = ({ children }) => {
       setResumeData(prev => ({ ...prev, [name]: value }));
     }
   };
-
   const handleSectionChange = (section, id, e) => {
     const { name, value } = e.target;
     setResumeData(prev => ({
@@ -105,58 +81,38 @@ export const ResumeProvider = ({ children }) => {
       )
     }));
   };
-
   const addSectionItem = (section) => {
     const newItem = { id: Date.now() };
     switch (section) {
-      case 'experience':
-        newItem.title = ""; newItem.company = ""; newItem.location = ""; newItem.start = ""; newItem.end = ""; newItem.description = "";
-        break;
-      case 'education':
-        newItem.degree = ""; newItem.school = ""; newItem.location = ""; newItem.start = ""; newItem.end = "";
-        break;
-      case 'skills':
-        newItem.name = "";
-        break;
-      case 'languages':
-        newItem.name = ""; newItem.level = "Básico";
-        break;
-      case 'projects':
-        newItem.name = ""; newItem.description = ""; newItem.link = "";
-        break;
+      case 'experience': newItem.title = ""; newItem.company = ""; newItem.location = ""; newItem.start = ""; newItem.end = ""; newItem.description = ""; break;
+      case 'education': newItem.degree = ""; newItem.school = ""; newItem.location = ""; newItem.start = ""; newItem.end = ""; break;
+      case 'certifications': newItem.name = ""; newItem.issuer = ""; newItem.year = ""; break;
+      case 'skills': newItem.name = ""; newItem.category = "Técnica"; break;
+      case 'languages': newItem.name = ""; newItem.level = "Básico"; break;
+      case 'projects': newItem.name = ""; newItem.description = ""; newItem.link = ""; break;
     }
     setResumeData(prev => ({ ...prev, [section]: [...prev[section], newItem] }));
   };
-
   const removeSectionItem = (section, id) => {
     setResumeData(prev => ({
       ...prev,
       [section]: prev[section].filter(item => item.id !== id)
     }));
   };
-
   const selectTemplate = (templateId) => {
     setTemplate(templateId);
     setPage('build');
   };
-
   const goHome = () => {
     setPage('select');
   };
 
-  // Valores a serem compartilhados com os componentes
   const value = {
-    page,
-    template,
-    resumeData,
-    fontSettings,
-    handleFontChange,
-    handleChange,
-    handleSectionChange,
-    addSectionItem,
-    removeSectionItem,
-    selectTemplate,
-    goHome
+    page, template, resumeData, fontSettings,
+    sectionVisibility,
+    handleSectionToggle,
+    handleFontChange, handleChange, handleSectionChange,
+    addSectionItem, removeSectionItem, selectTemplate, goHome
   };
 
   return (
@@ -166,7 +122,6 @@ export const ResumeProvider = ({ children }) => {
   );
 };
 
-// 3. Criar o Hook customizado para consumir o contexto
 export const useResume = () => {
   const context = useContext(ResumeContext);
   if (context === undefined) {

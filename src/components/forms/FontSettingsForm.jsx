@@ -2,9 +2,10 @@ import React from 'react';
 import { useResume } from '../../context/ResumeContext';
 import Select from '../ui/Select';
 import Section from '../ui/Section';
-import styles from './MasterResumeForm.module.css'; // Usamos o grid do MasterForm
+import FormColorInput from '../ui/FormColorInput'; // 1. Importar
+import styles from './MasterResumeForm.module.css';
 
-// Opções de Fonte (Família)
+// ... (fontOptions, sizeOptions - sem alteração) ...
 const fontOptions = [
   { name: 'Padrão (Inter)', value: "'Inter', var(--font-primary)" },
   { name: 'Padrão (Georgia)', value: "'Georgia', var(--font-secondary)" },
@@ -14,8 +15,6 @@ const fontOptions = [
   { name: 'Times New Roman', value: "'Times New Roman', serif" },
   { name: 'Garamond', value: "Garamond, serif" },
 ];
-
-// Opções de Fonte (Tamanho)
 const sizeOptions = {
   name: [
     { name: 'Padrão (3rem)', value: '3rem' },
@@ -39,12 +38,22 @@ const sizeOptions = {
   ],
 };
 
-
 const FontSettingsForm = () => {
   const { fontSettings, handleFontChange } = useResume();
 
   return (
-    <Section title="Configurações de Fonte" open={false}>
+    <Section title="Estilo & Formatação" open={false}>
+      {/* --- NOVO SELETOR DE COR --- */}
+      <FormColorInput
+        label="Cor de Destaque"
+        name="accentColor"
+        value={fontSettings.accentColor}
+        onChange={(e) => handleFontChange('accentColor', e.target.value)}
+      />
+      
+      <hr className={styles.divider} />
+      {/* --- FIM NOVO SELETOR --- */}
+
       {/* --- SELEÇÃO DE FAMÍLIA DE FONTE --- */}
       <div className={styles.grid}>
         <Select
@@ -70,7 +79,7 @@ const FontSettingsForm = () => {
         </Select>
       </div>
 
-      <hr className={styles.divider} /> {/* Separador visual */}
+      <hr className={styles.divider} /> 
 
       {/* --- SELEÇÃO DE TAMANHO DE FONTE --- */}
       <div className={styles.grid}>

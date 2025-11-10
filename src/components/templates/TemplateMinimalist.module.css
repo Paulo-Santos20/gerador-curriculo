@@ -4,7 +4,6 @@
   padding: 28px;
   color: #333;
   background-color: #ffffff;
-  /* Aplica a fonte e tamanho base do corpo */
   font-family: var(--font-body-family);
   font-size: var(--font-size-body);
 }
@@ -18,22 +17,20 @@
   letter-spacing: -1px;
   color: #111;
   margin-bottom: 0;
-  /* Aplica variáveis de Título e Tamanho */
   font-family: var(--font-heading-family);
   font-size: var(--font-size-name);
 }
 
 .title {
   font-weight: 500;
-  color: var(--primary-color);
-  /* Aplica variáveis de Título e Tamanho */
+  color: var(--template-accent-color); /* ATUALIZADO */
   font-family: var(--font-heading-family);
-  font-size: var(--font-size-item-title); /* Mapeado para Título de Item */
+  font-size: var(--font-size-item-title);
 }
 
 .layoutGrid {
   display: grid;
-  grid-template-columns: 65% 35%; /* 2/3 e 1/3 */
+  grid-template-columns: 65% 35%;
   gap: 32px;
 }
 
@@ -42,9 +39,7 @@
   border-right: 2px solid #f0f0f0;
 }
 
-.sidebarColumn {
-  /* A barra lateral */
-}
+.sidebarColumn { }
 
 .section {
   margin-bottom: 24px;
@@ -54,7 +49,6 @@
   font-style: italic;
   color: #555;
   white-space: pre-line;
-  /* Aplica variáveis de Corpo e Tamanho */
   font-family: var(--font-body-family);
   font-size: var(--font-size-body);
 }
@@ -65,7 +59,6 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 12px;
-  /* Aplica variáveis de Título e Tamanho */
   font-family: var(--font-heading-family);
   font-size: var(--font-size-section-title);
 }
@@ -82,7 +75,6 @@
 
 .itemTitle {
   font-weight: 600;
-  /* Aplica variáveis de Título e Tamanho */
   font-family: var(--font-heading-family);
   font-size: var(--font-size-item-title);
 }
@@ -90,26 +82,23 @@
 .itemDate {
   font-weight: 500;
   color: #777;
-  /* Aplica variáveis de Corpo e Tamanho */
   font-family: var(--font-body-family);
-  font-size: var(--font-size-body);
+  font-size: 0.9rem; /* Ligeiramente mais pequeno */
 }
 
 .itemSubtitle {
   font-weight: 500;
   color: #444;
   margin-bottom: 6px;
-  /* Aplica variáveis de Corpo e Tamanho */
   font-family: var(--font-body-family);
   font-size: var(--font-size-body);
 }
 
 .itemSubtitleLink {
   font-weight: 500;
-  color: var(--secondary-color);
+  color: var(--template-accent-color); /* ATUALIZADO */
   margin-bottom: 6px;
   word-break: break-all;
-  /* Aplica variáveis de Corpo e Tamanho */
   font-family: var(--font-body-family);
   font-size: var(--font-size-body);
 }
@@ -117,17 +106,13 @@
 .itemDesc {
   color: #555;
   white-space: pre-line;
-  /* Aplica variáveis de Corpo e Tamanho */
   font-family: var(--font-body-family);
   font-size: var(--font-size-body);
 }
 
-/* --- Barra Lateral --- */
-
 .contactList p {
   margin-bottom: 4px;
   word-break: break-all;
-  /* Aplica variáveis de Corpo e Tamanho */
   font-family: var(--font-body-family);
   font-size: var(--font-size-body);
 }
@@ -144,16 +129,14 @@
   color: #444;
   padding: 4px 10px;
   border-radius: 4px;
-  /* Aplica variáveis de Corpo e Tamanho */
   font-family: var(--font-body-family);
   font-size: var(--font-size-body);
 }
 
-
+.languageList { }
 
 .language {
   margin-bottom: 4px;
-  /* Aplica variáveis de Corpo e Tamanho */
   font-family: var(--font-body-family);
   font-size: var(--font-size-body);
 }
