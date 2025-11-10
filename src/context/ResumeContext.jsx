@@ -1,25 +1,49 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
 // Dados iniciais para o estado do currículo
 const initialResumeData = {
-  // ... (código existente) ...
-  personalInfo: { name: "", title: "", email: "", phone: "", address: "", linkedIn: "", portfolio: "" },
-  summary: "", experience: [], education: [], skills: [], languages: [], projects: [],
+  personalInfo: {
+    name: "",
+    title: "",
+    email: "",
+    phone: "",
+    address: "",
+    linkedIn: "",
+    portfolio: "",
+  },
+  summary: "",
+  experience: [],
+  education: [],
+  skills: [],
+  languages: [],
+  projects: [],
 };
 
-// --- ATUALIZADO ---
-// Estado inicial das fontes (agora inclui tamanhos)
-// Os valores em 'rem' são baseados nos padrões dos templates
+// Estado inicial das fontes
 const initialFontSettings = {
   heading: "'Georgia', var(--font-secondary)",
   body: "'Inter', var(--font-primary)",
-  // Novos estados de tamanho
-  sizeName: '3rem',           // Tamanho do Nome Principal
-  sizeSectionTitle: '1.4rem', // Tamanho dos Títulos (Experiência, etc.)
-  sizeItemTitle: '1.15rem',   // Tamanho dos Sub-títulos (Cargo, Curso)
-  sizeBody: '1rem',           // Tamanho do texto normal
+  sizeName: '3rem',
+  sizeSectionTitle: '1.4rem',
+  sizeItemTitle: '1.15rem',
+  sizeBody: '1rem',
 };
-// --- FIM DA ATUALIZAÇÃO ---
+
+// --- NOVA FUNÇÃO ---
+// Helper para carregar o estado do localStorage
+// Isso garante que o localStorage só seja lido UMA VEZ no carregamento.
+const loadState = (key, initialState) => {
+  try {
+    const savedData = localStorage.getItem(key);
+    if (savedData) {
+      return JSON.parse(savedData);
+    }
+  } catch (error) {
+    console.error(`Falha ao carregar ${key} do localStorage`, error);
+  }
+  return initialState;
+};
+// --- FIM DA NOVA FUNÇÃO ---
 
 // 1. Criar o Contexto
 const ResumeContext = createContext();
@@ -28,20 +52,41 @@ const ResumeContext = createContext();
 export const ResumeProvider = ({ children }) => {
   const [page, setPage] = useState('select');
   const [template, setTemplate] = useState('modern');
-  const [resumeData, setResumeData] = useState(initialResumeData);
-  const [fontSettings, setFontSettings] = useState(initialFontSettings);
 
-  // --- ATUALIZADO ---
-  // Handler para fontes (agora um handler genérico)
-  const handleFontChange = (field, value) => {
-    setFontSettings(prev => ({
-      ...prev,
-      [field]: value
-    }));
-  };
+  // --- ATUALIZAÇÃO AQUI ---
+  // Os 'useStates' agora usam a função 'loadState' para
+  // carregar dados salvos ou usar o valor inicial.
+  const [resumeData, setResumeData] = useState(() => loadState('resumeData', initialResumeData));
+  const [fontSettings, setFontSettings] = useState(() => loadState('fontSettings', initialFontSettings));
   // --- FIM DA ATUALIZAÇÃO ---
 
-  // ... (handleChange, handleSectionChange, addSectionItem, removeSectionItem) ...
+
+  // --- NOVO 'useEffect' PARA SALVAR DADOS ---
+  // Este hook é acionado sempre que 'resumeData' muda
+  useEffect(() => {
+    try {
+      localStorage.setItem('resumeData', JSON.stringify(resumeData));
+    } catch (error) {
+      console.error("Falha ao salvar 'resumeData' no localStorage", error);
+    }
+  }, [resumeData]);
+
+  // Este hook é acionado sempre que 'fontSettings' muda
+  useEffect(() => {
+    try {
+      localStorage.setItem('fontSettings', JSON.stringify(fontSettings));
+    } catch (error) {
+      console.error("Falha ao salvar 'fontSettings' no localStorage", error);
+    }
+  }, [fontSettings]);
+  // --- FIM DOS NOVOS 'useEffect's ---
+
+
+  // --- (Todas as funções de handler permanecem as mesmas) ---
+  const handleFontChange = (field, value) => {
+    setFontSettings(prev => ({ ...prev, [field]: value }));
+  };
+
   const handleChange = (e) => {
     const { name, value, dataset } = e.target;
     if (dataset.section) {
@@ -50,6 +95,7 @@ export const ResumeProvider = ({ children }) => {
       setResumeData(prev => ({ ...prev, [name]: value }));
     }
   };
+
   const handleSectionChange = (section, id, e) => {
     const { name, value } = e.target;
     setResumeData(prev => ({
@@ -59,6 +105,7 @@ export const ResumeProvider = ({ children }) => {
       )
     }));
   };
+
   const addSectionItem = (section) => {
     const newItem = { id: Date.now() };
     switch (section) {
@@ -80,29 +127,30 @@ export const ResumeProvider = ({ children }) => {
     }
     setResumeData(prev => ({ ...prev, [section]: [...prev[section], newItem] }));
   };
+
   const removeSectionItem = (section, id) => {
     setResumeData(prev => ({
       ...prev,
       [section]: prev[section].filter(item => item.id !== id)
     }));
   };
-  // ... (selectTemplate, goHome) ...
+
   const selectTemplate = (templateId) => {
     setTemplate(templateId);
     setPage('build');
   };
+
   const goHome = () => {
     setPage('select');
   };
-
 
   // Valores a serem compartilhados com os componentes
   const value = {
     page,
     template,
     resumeData,
-    fontSettings, // Passa o objeto de fontes completo
-    handleFontChange, // Passa o handler genérico
+    fontSettings,
+    handleFontChange,
     handleChange,
     handleSectionChange,
     addSectionItem,
