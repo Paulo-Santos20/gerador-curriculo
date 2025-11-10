@@ -1,0 +1,140 @@
+/* Estilos para TemplateProfissional (Baseado em Rafhaela) */
+.profissional {
+  width: 100%;
+  height: 100%;
+  padding: 28px;
+  background-color: #ffffff;
+  color: #444;
+  font-family: var(--font-body-family);
+  font-size: var(--font-size-body);
+}
+
+.header {
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.name {
+  font-family: var(--font-heading-family);
+  font-size: var(--font-size-name);
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 4px;
+}
+
+.title {
+  font-family: var(--font-heading-family);
+  font-size: var(--font-size-item-title);
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.address {
+  font-size: var(--font-size-body);
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.contactInfo,
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 8px;
+  font-size: 0.95rem; /* Um pouco menor */
+  color: #555;
+  margin-bottom: 4px;
+}
+
+.links {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.sectionTitle {
+  font-family: var(--font-heading-family);
+  font-size: var(--font-size-section-title);
+  font-weight: 700;
+  color: #333;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 6px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.summary {
+  font-size: var(--font-size-body);
+  font-style: italic;
+  white-space: pre-line;
+}
+
+.item {
+  margin-bottom: 16px;
+}
+
+.itemTitle {
+  font-family: var(--font-heading-family);
+  font-size: var(--font-size-item-title);
+  font-weight: 700;
+}
+
+.itemSubtitle {
+  font-size: var(--font-size-body);
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 2px;
+}
+
+.itemSubtitleLink {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 6px;
+  word-break: break-all;
+}
+
+.itemDate {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #777;
+  margin-bottom: 6px;
+}
+
+.itemDesc {
+  font-size: var(--font-size-body);
+  color: #555;
+  white-space: pre-line;
+}
+
+/* Layout em 3 colunas para habilidades */
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.skillCategory {
+  font-size: 0.95rem;
+}
+
+.skillCategoryTitle {
+  font-family: var(--font-heading-family);
+  font-size: var(--font-size-item-title);
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.list li {
+  margin-bottom: 4px;
+}

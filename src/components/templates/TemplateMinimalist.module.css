@@ -4,7 +4,9 @@
   padding: 28px;
   color: #333;
   background-color: #ffffff;
-  font-family: var(--font-body-family); /* Padrão do corpo */
+  /* Aplica a fonte e tamanho base do corpo */
+  font-family: var(--font-body-family);
+  font-size: var(--font-size-body);
 }
 
 .header {
@@ -12,19 +14,21 @@
 }
 
 .name {
-  font-size: 3.2rem;
   font-weight: 800;
   letter-spacing: -1px;
   color: #111;
   margin-bottom: 0;
-  font-family: var(--font-heading-family); /* Título */
+  /* Aplica variáveis de Título e Tamanho */
+  font-family: var(--font-heading-family);
+  font-size: var(--font-size-name);
 }
 
 .title {
-  font-size: 1.6rem;
   font-weight: 500;
   color: var(--primary-color);
-  font-family: var(--font-heading-family); /* Título */
+  /* Aplica variáveis de Título e Tamanho */
+  font-family: var(--font-heading-family);
+  font-size: var(--font-size-item-title); /* Mapeado para Título de Item */
 }
 
 .layoutGrid {
@@ -47,21 +51,23 @@
 }
 
 .summary {
-  font-size: 1rem;
   font-style: italic;
   color: #555;
   white-space: pre-line;
-  font-family: var(--font-body-family); /* Corpo */
+  /* Aplica variáveis de Corpo e Tamanho */
+  font-family: var(--font-body-family);
+  font-size: var(--font-size-body);
 }
 
 .sectionTitle {
-  font-size: 1.1rem;
   font-weight: 700;
   color: #000;
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 12px;
-  font-family: var(--font-heading-family); /* Título */
+  /* Aplica variáveis de Título e Tamanho */
+  font-family: var(--font-heading-family);
+  font-size: var(--font-size-section-title);
 }
 
 .item {
@@ -75,49 +81,55 @@
 }
 
 .itemTitle {
-  font-size: 1.15rem;
   font-weight: 600;
-  font-family: var(--font-heading-family); /* Título */
+  /* Aplica variáveis de Título e Tamanho */
+  font-family: var(--font-heading-family);
+  font-size: var(--font-size-item-title);
 }
 
 .itemDate {
-  font-size: 0.85rem;
   font-weight: 500;
   color: #777;
-  font-family: var(--font-body-family); /* Corpo */
+  /* Aplica variáveis de Corpo e Tamanho */
+  font-family: var(--font-body-family);
+  font-size: var(--font-size-body);
 }
 
 .itemSubtitle {
-  font-size: 1rem;
   font-weight: 500;
   color: #444;
   margin-bottom: 6px;
-  font-family: var(--font-body-family); /* Corpo */
+  /* Aplica variáveis de Corpo e Tamanho */
+  font-family: var(--font-body-family);
+  font-size: var(--font-size-body);
 }
 
 .itemSubtitleLink {
-  font-size: 1rem;
   font-weight: 500;
   color: var(--secondary-color);
   margin-bottom: 6px;
   word-break: break-all;
-  font-family: var(--font-body-family); /* Corpo */
+  /* Aplica variáveis de Corpo e Tamanho */
+  font-family: var(--font-body-family);
+  font-size: var(--font-size-body);
 }
 
 .itemDesc {
-  font-size: 0.95rem;
   color: #555;
   white-space: pre-line;
-  font-family: var(--font-body-family); /* Corpo */
+  /* Aplica variáveis de Corpo e Tamanho */
+  font-family: var(--font-body-family);
+  font-size: var(--font-size-body);
 }
 
 /* --- Barra Lateral --- */
 
 .contactList p {
-  font-size: 0.95rem;
   margin-bottom: 4px;
   word-break: break-all;
-  font-family: var(--font-body-family); /* Corpo */
+  /* Aplica variáveis de Corpo e Tamanho */
+  font-family: var(--font-body-family);
+  font-size: var(--font-size-body);
 }
 
 .skillsContainer {
@@ -127,23 +139,23 @@
 }
 
 .skill {
-  font-size: 0.9rem;
   font-weight: 500;
   background-color: #f0f0f0;
   color: #444;
   padding: 4px 10px;
   border-radius: 4px;
-  font-family: var(--font-body-family); /* Corpo */
+  /* Aplica variáveis de Corpo e Tamanho */
+  font-family: var(--font-body-family);
+  font-size: var(--font-size-body);
 }
 
-.languageList {
-  /* */
-}
+
 
 .language {
-  font-size: 0.95rem;
   margin-bottom: 4px;
-  font-family: var(--font-body-family); /* Corpo */
+  /* Aplica variáveis de Corpo e Tamanho */
+  font-family: var(--font-body-family);
+  font-size: var(--font-size-body);
 }
 
 .language span {

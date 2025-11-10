@@ -3,6 +3,11 @@ import { useResume } from '../../context/ResumeContext';
 import TemplateModern from './TemplateModern';
 import TemplateClassic from './TemplateClassic';
 import TemplateMinimalist from './TemplateMinimalist';
+// --- NOVOS IMPORTS ---
+import TemplateExecutivo from './TemplateExecutivo';
+import TemplateProfissional from './TemplateProfissional';
+// --- FIM NOVOS IMPORTS ---
+
 import styles from './ResumePreview.module.css';
 
 const ResumePreview = forwardRef((props, ref) => {
@@ -17,13 +22,17 @@ const ResumePreview = forwardRef((props, ref) => {
         return <TemplateModern data={data} />;
       case 'minimalist':
         return <TemplateMinimalist data={data} />;
+      // --- NOVOS CASES ---
+      case 'executivo':
+        return <TemplateExecutivo data={data} />;
+      case 'profissional':
+        return <TemplateProfissional data={data} />;
+      // --- FIM NOVOS CASES ---
       default:
         return <TemplateModern data={data} />;
     }
   };
 
-  // --- ATUALIZADO ---
-  // Injeta TODAS as configurações de fonte como variáveis CSS
   const fontStyleVariables = {
     '--font-heading-family': fontSettings.heading,
     '--font-body-family': fontSettings.body,
@@ -32,7 +41,6 @@ const ResumePreview = forwardRef((props, ref) => {
     '--font-size-item-title': fontSettings.sizeItemTitle,
     '--font-size-body': fontSettings.sizeBody,
   };
-  // --- FIM DA ATUALIZAÇÃO ---
 
   return (
     <div ref={ref} className={styles.previewContainer} style={fontStyleVariables}>

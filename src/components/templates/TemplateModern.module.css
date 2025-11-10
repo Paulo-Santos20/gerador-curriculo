@@ -3,7 +3,8 @@
   width: 100%;
   height: 100%;
   color: #333;
-  font-family: var(--font-body-family); /* Padrão do corpo */
+  /* Aplica a fonte base do corpo */
+  font-family: var(--font-body-family);
 }
 
 .sidebar {
@@ -19,23 +20,25 @@
   height: 100%;
   background-color: #ffffff;
   padding: 24px;
-  overflow-y: hidden;
+  overflow-y: hidden; /* Evita que o conteúdo principal vaze */
 }
 
 .name {
-  font-size: 2.8rem;
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 4px;
-  font-family: var(--font-heading-family); /* Título */
+  /* Aplica variáveis de Título e Tamanho */
+  font-family: var(--font-heading-family);
+  font-size: var(--font-size-name);
 }
 
 .title {
-  font-size: 1.4rem;
   font-weight: 300;
   color: var(--accent-color);
   margin-bottom: 24px;
-  font-family: var(--font-heading-family); /* Título */
+  /* Aplica variáveis de Título e Tamanho */
+  font-family: var(--font-heading-family);
+  font-size: var(--font-size-item-title); /* Mapeado para Título de Item */
 }
 
 .section {
@@ -43,20 +46,22 @@
 }
 
 .sectionTitle {
-  font-size: 1.2rem;
   font-weight: 600;
   color: var(--accent-color);
   border-bottom: 2px solid var(--accent-color);
   padding-bottom: 4px;
   margin-bottom: 12px;
   text-transform: uppercase;
-  font-family: var(--font-heading-family); /* Título */
+  /* Aplica variáveis de Título e Tamanho */
+  font-family: var(--font-heading-family);
+  font-size: var(--font-size-section-title);
 }
 
 .sidebar p {
-  font-size: 0.95rem;
   margin-bottom: 4px;
-  font-family: var(--font-body-family); /* Corpo */
+  /* Aplica variáveis de Corpo e Tamanho */
+  font-family: var(--font-body-family);
+  font-size: var(--font-size-body);
 }
 
 .sidebar .break {
@@ -66,26 +71,29 @@
 .list {
   list-style: disc;
   padding-left: 16px;
-  font-size: 0.95rem;
-  font-family: var(--font-body-family); /* Corpo */
+  /* Aplica variáveis de Corpo e Tamanho */
+  font-family: var(--font-body-family);
+  font-size: var(--font-size-body);
 }
 
 .mainTitle {
-  font-size: 1.6rem;
   font-weight: 700;
   color: #2c3e50;
   border-bottom: 2px solid #bdc3c7;
   padding-bottom: 4px;
   margin-bottom: 16px;
   text-transform: uppercase;
-  font-family: var(--font-heading-family); /* Título */
+  /* Aplica variáveis de Título e Tamanho */
+  font-family: var(--font-heading-family);
+  font-size: var(--font-size-section-title);
 }
 
 .summary {
-  font-size: 1rem;
   font-style: italic;
   white-space: pre-line;
-  font-family: var(--font-body-family); /* Corpo */
+  /* Aplica variáveis de Corpo e Tamanho */
+  font-family: var(--font-body-family);
+  font-size: var(--font-size-body);
 }
 
 .item {
@@ -93,29 +101,33 @@
 }
 
 .itemTitle {
-  font-size: 1.1rem;
   font-weight: 600;
   color: #34495e;
-  font-family: var(--font-heading-family); /* Título */
+  /* Aplica variáveis de Título e Tamanho */
+  font-family: var(--font-heading-family);
+  font-size: var(--font-size-item-title);
 }
 
 .itemSubtitle {
-  font-size: 1rem;
   font-weight: 500;
   color: var(--secondary-color);
-  font-family: var(--font-body-family); /* Corpo */
+  /* Aplica variáveis de Corpo e Tamanho */
+  font-family: var(--font-body-family);
+  font-size: var(--font-size-body);
 }
 
 .itemDate {
-  font-size: 0.8rem;
   color: #7f8c8d;
   margin-bottom: 6px;
-  font-family: var(--font-body-family); /* Corpo */
+  /* Aplica variáveis de Corpo e Tamanho */
+  font-family: var(--font-body-family);
+  font-size: var(--font-size-body);
 }
 
 .itemDesc {
-  font-size: 0.95rem;
   color: #555;
   white-space: pre-line;
-  font-family: var(--font-body-family); /* Corpo */
+  /* Aplica variáveis de Corpo e Tamanho */
+  font-family: var(--font-body-family);
+  font-size: var(--font-size-body);
 }
