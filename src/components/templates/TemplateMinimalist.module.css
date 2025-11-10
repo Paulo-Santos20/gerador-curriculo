@@ -6,10 +6,12 @@
   background-color: #ffffff;
   font-family: var(--font-body-family);
   font-size: var(--font-size-body);
+  letter-spacing: var(--template-letter-spacing, normal);
+  line-height: var(--template-line-height, 1.6);
 }
 
 .header {
-  margin-bottom: 24px;
+  margin-bottom: var(--template-section-spacing, 24px);
 }
 
 .name {
@@ -23,7 +25,7 @@
 
 .title {
   font-weight: 500;
-  color: var(--template-accent-color); /* ATUALIZADO */
+  color: var(--template-accent-color);
   font-family: var(--font-heading-family);
   font-size: var(--font-size-item-title);
 }
@@ -42,7 +44,7 @@
 .sidebarColumn { }
 
 .section {
-  margin-bottom: 24px;
+  margin-bottom: var(--template-section-spacing, 24px);
 }
 
 .summary {
@@ -83,7 +85,7 @@
   font-weight: 500;
   color: #777;
   font-family: var(--font-body-family);
-  font-size: 0.9rem; /* Ligeiramente mais pequeno */
+  font-size: 0.9rem;
 }
 
 .itemSubtitle {
@@ -96,7 +98,7 @@
 
 .itemSubtitleLink {
   font-weight: 500;
-  color: var(--template-accent-color); /* ATUALIZADO */
+  color: var(--template-accent-color);
   margin-bottom: 6px;
   word-break: break-all;
   font-family: var(--font-body-family);
@@ -108,6 +110,7 @@
   white-space: pre-line;
   font-family: var(--font-body-family);
   font-size: var(--font-size-body);
+  line-height: var(--template-line-height, 1.6);
 }
 
 .contactList p {

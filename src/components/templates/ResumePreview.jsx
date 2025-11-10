@@ -28,20 +28,28 @@ const ResumePreview = () => {
     }
   };
 
-  // --- ATUALIZAÇÃO AQUI ---
-  const fontStyleVariables = {
+  // Injeta TODAS as variáveis de estilo
+  const styleVariables = {
+    // Cor
+    '--template-accent-color': fontSettings.accentColor,
+    // Fontes
     '--font-heading-family': fontSettings.heading,
     '--font-body-family': fontSettings.body,
+    // Tamanhos
     '--font-size-name': fontSettings.sizeName,
     '--font-size-section-title': fontSettings.sizeSectionTitle,
     '--font-size-item-title': fontSettings.sizeItemTitle,
     '--font-size-body': fontSettings.sizeBody,
-    '--template-accent-color': fontSettings.accentColor, // NOVO
+    // Espaçamento
+    '--template-letter-spacing': fontSettings.letterSpacing,
+    '--template-line-height': fontSettings.lineHeight,
+    '--template-section-spacing': fontSettings.sectionSpacing,
+    // Layout
+    '--template-modern-sidebar-width': fontSettings.modernSidebarWidth,
   };
-  // --- FIM DA ATUALIZAÇÃO ---
 
   return (
-    <div className={styles.previewContainer} style={fontStyleVariables}>
+    <div className={styles.previewContainer} style={styleVariables}>
       {renderTemplate()}
     </div>
   );

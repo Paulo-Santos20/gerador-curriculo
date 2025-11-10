@@ -1,69 +1,128 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 
-// ... (initialResumeData) ...
+// 1. DADOS INICIAIS
+
+// Dados iniciais para o estado do currículo
 const initialResumeData = {
   personalInfo: { name: "", title: "", email: "", phone: "", address: "", linkedIn: "", portfolio: "" },
-  summary: "", experience: [], education: [], certifications: [], skills: [], languages: [], projects: [],
+  summary: "",
+  experience: [],
+  education: [],
+  certifications: [],
+  skills: [],
+  languages: [],
+  projects: [],
 };
 
-// --- ATUALIZAÇÃO AQUI ---
+// Estado inicial para fontes e layout
 const initialFontSettings = {
+  // Fontes
   heading: "'Georgia', var(--font-secondary)",
   body: "'Inter', var(--font-primary)",
+  // Tamanhos
   sizeName: '3rem',
   sizeSectionTitle: '1.4rem',
   sizeItemTitle: '1.15rem',
   sizeBody: '1rem',
-  accentColor: '#005f73' // Cor de destaque padrão (o nosso azul escuro)
+  // Cor
+  accentColor: '#005f73',
+  // Espaçamento
+  letterSpacing: 'normal',
+  lineHeight: '1.6',
+  sectionSpacing: '20px',
+  // Layout Específico
+  modernSidebarWidth: '35%',
 };
-// --- FIM DA ATUALIZAÇÃO ---
 
-// --- ATUALIZAÇÃO AQUI ---
-// Funde o estado inicial com os dados salvos
+// Ordem padrão das seções (SEMPRE UMA ARRAY)
+const initialLayoutOrder = [
+  'summary', 'experience', 'education', 'certifications', 'skills', 'languages', 'projects'
+];
+
+// Estado inicial para visibilidade das seções
+const initialSectionVisibility = {
+  summary: true,
+  experience: true,
+  education: true,
+  certifications: true,
+  skills: true,
+  languages: true,
+  projects: true,
+};
+
+// 2. FUNÇÃO HELPER DE LOADSTATE (CORRIGIDA)
+
+// Carrega o estado do localStorage. Se falhar, retorna o estado inicial.
 const loadState = (key, initialState) => {
   try {
     const savedData = localStorage.getItem(key);
     if (savedData) {
-      const parsedData = JSON.parse(savedData);
-      // Funde o inicial com o salvo para garantir que novas chaves existam
-      return { ...initialState, ...parsedData }; 
+      return JSON.parse(savedData);
     }
   } catch (error) {
     console.error(`Falha ao carregar ${key} do localStorage`, error);
   }
   return initialState;
 };
-// --- FIM DA ATUALIZAÇÃO ---
 
-const initialSectionVisibility = {
-  summary: true, experience: true, education: true,
-  certifications: true, skills: true, languages: true, projects: true,
-};
+// 3. CRIAÇÃO DO CONTEXTO E PROVIDER
 
 const ResumeContext = createContext();
 
 export const ResumeProvider = ({ children }) => {
+  // Estados de Navegação
   const [page, setPage] = useState('select');
   const [template, setTemplate] = useState('modern');
-  const [resumeData, setResumeData] = useState(() => loadState('resumeData', initialResumeData));
-  const [fontSettings, setFontSettings] = useState(() => loadState('fontSettings', initialFontSettings));
-  const [sectionVisibility, setSectionVisibility] = useState(() => loadState('sectionVisibility', initialSectionVisibility));
+  
+  // --- CARREGAMENTO DE ESTADO CORRIGIDO ---
+  
+  // Estados que são OBJETOS (fundimos para garantir que novas chaves sejam adicionadas)
+  const [resumeData, setResumeData] = useState(() => {
+    const saved = loadState('resumeData', initialResumeData);
+    return { ...initialResumeData, ...saved };
+  });
+  const [fontSettings, setFontSettings] = useState(() => {
+    const saved = loadState('fontSettings', initialFontSettings);
+    return { ...initialFontSettings, ...saved };
+  });
+  const [sectionVisibility, setSectionVisibility] = useState(() => {
+    const saved = loadState('sectionVisibility', initialSectionVisibility);
+    return { ...initialSectionVisibility, ...saved };
+  });
+  
+  // Estado que é uma ARRAY (NÃO PODE ser fundido como um objeto)
+  const [layoutOrder, setLayoutOrder] = useState(() => 
+    loadState('layoutOrder', initialLayoutOrder)
+  );
+  // --- FIM DA CORREÇÃO ---
 
-  // ... (useEffects) ...
+  // Salva todos os estados no localStorage
   useEffect(() => { localStorage.setItem('resumeData', JSON.stringify(resumeData)); }, [resumeData]);
   useEffect(() => { localStorage.setItem('fontSettings', JSON.stringify(fontSettings)); }, [fontSettings]);
   useEffect(() => { localStorage.setItem('sectionVisibility', JSON.stringify(sectionVisibility)); }, [sectionVisibility]);
+  useEffect(() => { localStorage.setItem('layoutOrder', JSON.stringify(layoutOrder)); }, [layoutOrder]);
 
-  // O handleFontChange genérico já funciona para 'accentColor'
+  // 4. HANDLERS (FUNÇÕES DE ATUALIZAÇÃO)
+
+  // Handler para reordenar o layout
+  const handleLayoutOrderChange = (newOrder) => {
+    setLayoutOrder(newOrder);
+  };
+
+  // Handler genérico para fontes, tamanhos, cores e espaçamentos
   const handleFontChange = (field, value) => {
     setFontSettings(prev => ({ ...prev, [field]: value }));
   };
 
+  // Handler para ligar/desligar seções
   const handleSectionToggle = (sectionName) => {
-    setSectionVisibility(prev => ({ ...prev, [sectionName]: !prev[sectionName] }));
+    setSectionVisibility(prev => ({
+      ...prev,
+      [sectionName]: !prev[sectionName]
+    }));
   };
-
-  // ... (handleChange, handleSectionChange, addSectionItem, removeSectionItem, selectTemplate, goHome) ...
+  
+  // Handler para campos de texto simples
   const handleChange = (e) => {
     const { name, value, dataset } = e.target;
     if (dataset.section) {
@@ -72,6 +131,8 @@ export const ResumeProvider = ({ children }) => {
       setResumeData(prev => ({ ...prev, [name]: value }));
     }
   };
+
+  // Handler para itens em seções dinâmicas (experiência, etc.)
   const handleSectionChange = (section, id, e) => {
     const { name, value } = e.target;
     setResumeData(prev => ({
@@ -81,6 +142,8 @@ export const ResumeProvider = ({ children }) => {
       )
     }));
   };
+
+  // Adicionar um novo item (experiência, educação, etc.)
   const addSectionItem = (section) => {
     const newItem = { id: Date.now() };
     switch (section) {
@@ -93,12 +156,16 @@ export const ResumeProvider = ({ children }) => {
     }
     setResumeData(prev => ({ ...prev, [section]: [...prev[section], newItem] }));
   };
+
+  // Remover um item
   const removeSectionItem = (section, id) => {
     setResumeData(prev => ({
       ...prev,
       [section]: prev[section].filter(item => item.id !== id)
     }));
   };
+
+  // Navegação
   const selectTemplate = (templateId) => {
     setTemplate(templateId);
     setPage('build');
@@ -107,9 +174,13 @@ export const ResumeProvider = ({ children }) => {
     setPage('select');
   };
 
+  // 5. VALORES FORNECIDOS PELO PROVIDER
+
   const value = {
     page, template, resumeData, fontSettings,
     sectionVisibility,
+    layoutOrder,
+    handleLayoutOrderChange,
     handleSectionToggle,
     handleFontChange, handleChange, handleSectionChange,
     addSectionItem, removeSectionItem, selectTemplate, goHome
@@ -122,6 +193,7 @@ export const ResumeProvider = ({ children }) => {
   );
 };
 
+// 6. HOOK CUSTOMIZADO
 export const useResume = () => {
   const context = useContext(ResumeContext);
   if (context === undefined) {

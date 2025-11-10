@@ -6,29 +6,31 @@
   background-color: #ffffff;
   font-family: var(--font-body-family);
   font-size: var(--font-size-body);
+  letter-spacing: var(--template-letter-spacing, normal);
+  line-height: var(--template-line-height, 1.6);
 }
 
 .header {
   text-align: center;
   border-bottom: 3px solid #ddd;
   padding-bottom: 16px;
-  margin-bottom: 24px;
+  margin-bottom: var(--template-section-spacing, 24px);
 }
 
 .name {
-  font-size: var(--font-size-name);
   font-weight: 700;
   color: #111;
   margin-bottom: 4px;
   font-family: var(--font-heading-family);
+  font-size: var(--font-size-name);
 }
 
 .title {
-  font-size: var(--font-size-item-title);
   font-weight: 400;
   color: #444;
   margin-bottom: 12px;
   font-family: var(--font-heading-family);
+  font-size: var(--font-size-item-title);
 }
 
 .contactInfo,
@@ -44,16 +46,15 @@
 }
 
 .links {
-  color: var(--template-accent-color); /* ATUALIZADO */
+  color: var(--template-accent-color);
   font-weight: 600;
 }
 
 .section {
-  margin-bottom: 20px;
+  margin-bottom: var(--template-section-spacing, 20px);
 }
 
 .sectionTitle {
-  font-size: var(--font-size-section-title);
   font-weight: 600;
   color: #333;
   border-bottom: 2px solid #eee;
@@ -61,6 +62,7 @@
   margin-bottom: 12px;
   text-transform: uppercase;
   font-family: var(--font-heading-family);
+  font-size: var(--font-size-section-title);
 }
 
 .summary {
@@ -81,42 +83,44 @@
 }
 
 .itemTitle {
-  font-size: var(--font-size-item-title);
   font-weight: 700;
   font-family: var(--font-heading-family);
+  font-size: var(--font-size-item-title);
 }
 
 .itemDate {
-  font-size: 0.9rem; /* Ligeiramente mais pequeno */
+  font-size: 0.9rem;
   font-weight: 500;
   color: #666;
   font-family: var(--font-body-family);
 }
 
 .itemSubtitle {
-  font-size: var(--font-size-body);
   font-weight: 600;
   color: #444;
   margin-bottom: 6px;
   font-family: var(--font-body-family);
+  font-size: var(--font-size-body);
 }
 
 .itemSubtitleLink {
-  font-size: var(--font-size-body);
   font-weight: 600;
-  color: var(--template-accent-color); /* ATUALIZADO */
+  color: var(--template-accent-color);
   margin-bottom: 6px;
   word-break: break-all;
   font-family: var(--font-body-family);
+  font-size: var(--font-size-body);
 }
 
 .itemDesc {
-  font-size: var(--font-size-body);
   color: #333;
   white-space: pre-line;
   font-family: var(--font-body-family);
+  font-size: var(--font-size-body);
+  line-height: var(--template-line-height, 1.6);
 }
 
+/* O .grid não é mais usado para layout, mas pode ser usado por habilidades/idiomas se re-adicionado */
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

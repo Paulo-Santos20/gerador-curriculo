@@ -2,13 +2,17 @@ import React, { useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
 import { useResume } from '../../context/ResumeContext';
 import MasterResumeForm from '../../components/forms/MasterResumeForm';
-import ResumePreview from '../../components/templates/ResumePreview';
+import ResumePreview from '../../components/templates/ResumePreview.jsx';
 import Button from '../../components/ui/Button';
-// 1. IMPORTAR O NOVO ÍCONE
+
+// --- ESTA É A LINHA CORRIGIDA ---
+// O caminho estava incompleto. O correto é ../../components/icons
 import { IconChevronLeft, IconDownload, IconFileText } from '../../components/icons';
+// --- FIM DA CORREÇÃO ---
+
 import styles from './ResumeBuilderPage.module.css';
 
-// 2. IMPORTAR OS ARQUIVOS CSS COMO TEXTO (PARA EMBUTIR NO HTML)
+// Importar os arquivos CSS como texto (para embutir no HTML)
 import globalCSS from '../../styles/global.css?inline';
 import previewCSS from '../../components/templates/ResumePreview.module.css?inline';
 import modernCSS from '../../components/templates/TemplateModern.module.css?inline';
@@ -29,12 +33,10 @@ const ResumeBuilderPage = () => {
     pageStyle: `@page { size: A4; margin: 0; }`,
   });
 
-  // 3. NOVA LÓGICA DE DOWNLOAD (HTML)
+  // Lógica de Download (HTML)
   const handleDownloadHtml = () => {
-    // Pega o HTML do currículo da nossa área de impressão
     const resumeHtml = printableRef.current.innerHTML;
 
-    // Seleciona o CSS do template correto
     let templateCSS = '';
     switch (template) {
       case 'modern': templateCSS = modernCSS; break;
@@ -44,7 +46,6 @@ const ResumeBuilderPage = () => {
       case 'profissional': templateCSS = profissionalCSS; break;
     }
 
-    // Cria um documento HTML completo como uma string
     const fullHtml = `
       <!DOCTYPE html>
       <html lang="pt-br">
@@ -73,7 +74,7 @@ const ResumeBuilderPage = () => {
           .previewContainer {
             width: 210mm;
             height: 297mm;
-            font-size: 10pt !important; /* Tamanho de fonte padrão para Word */
+            font-size: 10pt !important;
             box-shadow: 0 0 10px rgba(0,0,0,0.5);
             margin: 0;
             overflow: visible;
@@ -86,18 +87,15 @@ const ResumeBuilderPage = () => {
       </html>
     `;
 
-    // Cria um "Blob" (arquivo em memória)
     const blob = new Blob([fullHtml], { type: 'text/html' });
     const url = URL.createObjectURL(blob);
 
-    // Cria um link falso para acionar o download
     const a = document.createElement('a');
     a.href = url;
     a.download = `${resumeData.personalInfo.name || 'Meu-Curriculo'}.html`;
     document.body.appendChild(a);
     a.click();
     
-    // Limpa
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
   };
@@ -112,7 +110,6 @@ const ResumeBuilderPage = () => {
             Trocar Modelo
           </Button>
 
-          {/* 4. NOVO BOTÃO DE DOWNLOAD HTML */}
           <Button onClick={handleDownloadHtml} variant="secondary">
             <IconFileText />
             Baixar .HTML
@@ -127,12 +124,14 @@ const ResumeBuilderPage = () => {
         <MasterResumeForm />
       </div>
 
-      {/* ... (Coluna da Pré-visualização e área de Impressão) ... */}
+      {/* Coluna da Pré-visualização (Direita) */}
       <div className={styles.previewColumn}>
         <div className={styles.previewWrapper}>
           <ResumePreview />
         </div>
       </div>
+
+      {/* Área de Impressão Escondida */}
       <div ref={printableRef} className={styles.printableArea}>
         <ResumePreview />
       </div>

@@ -6,11 +6,13 @@
   color: #333;
   font-family: var(--font-body-family);
   font-size: var(--font-size-body);
+  letter-spacing: var(--template-letter-spacing, normal);
+  line-height: var(--template-line-height, 1.6);
 }
 
 .header {
   text-align: left;
-  margin-bottom: 24px;
+  margin-bottom: var(--template-section-spacing, 24px);
 }
 
 .name {
@@ -40,18 +42,18 @@
 }
 
 .links {
-  color: var(--template-accent-color); /* ATUALIZADO */
+  color: var(--template-accent-color);
   font-weight: 600;
 }
 
 .section {
-  margin-bottom: 20px;
+  margin-bottom: var(--template-section-spacing, 20px);
 }
 
 .sectionTitle {
   font-weight: 700;
   color: #333;
-  border-bottom: 2px solid var(--template-accent-color); /* ATUALIZADO */
+  border-bottom: 2px solid var(--template-accent-color);
   padding-bottom: 4px;
   margin-bottom: 12px;
   text-transform: uppercase;
@@ -97,7 +99,7 @@
 
 .itemSubtitleLink {
   font-weight: 600;
-  color: var(--template-accent-color); /* ATUALIZADO */
+  color: var(--template-accent-color);
   margin-bottom: 6px;
   word-break: break-all;
   font-size: var(--font-size-body);
@@ -107,6 +109,7 @@
   color: #555;
   white-space: pre-line;
   font-size: var(--font-size-body);
+  line-height: var(--template-line-height, 1.6);
 }
 
 .skillsList {
@@ -125,7 +128,7 @@
 
 .skillsList li::before {
   content: '•';
-  color: var(--template-accent-color); /* ATUALIZADO */
+  color: var(--template-accent-color);
   position: absolute;
   left: 0;
   top: 0;
