@@ -1,0 +1,16 @@
+.previewContainer {
+  width: 100%;
+  height: 100%; /* O wrapper vai controlar o aspect-ratio */
+  background-color: var(--surface-color);
+  overflow: hidden;
+  
+  /* Corrige o tamanho da fonte para a escala */
+  font-size: 10px; /* Base de fonte para o A4 (8pt aprox) */
+}
+
+/* Estilos de fonte globais para os templates */
+.previewContainer h1, .previewContainer h2, .previewContainer h3, .previewContainer h4, .previewContainer p, .previewContainer li, .previewContainer span {
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}

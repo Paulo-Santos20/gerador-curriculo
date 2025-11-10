@@ -1,0 +1,151 @@
+.minimalist {
+  width: 100%;
+  height: 100%;
+  padding: 28px;
+  color: #333;
+  background-color: #ffffff;
+  font-family: var(--font-body-family); /* Padrão do corpo */
+}
+
+.header {
+  margin-bottom: 24px;
+}
+
+.name {
+  font-size: 3.2rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: #111;
+  margin-bottom: 0;
+  font-family: var(--font-heading-family); /* Título */
+}
+
+.title {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--primary-color);
+  font-family: var(--font-heading-family); /* Título */
+}
+
+.layoutGrid {
+  display: grid;
+  grid-template-columns: 65% 35%; /* 2/3 e 1/3 */
+  gap: 32px;
+}
+
+.mainColumn {
+  padding-right: 24px;
+  border-right: 2px solid #f0f0f0;
+}
+
+.sidebarColumn {
+  /* A barra lateral */
+}
+
+.section {
+  margin-bottom: 24px;
+}
+
+.summary {
+  font-size: 1rem;
+  font-style: italic;
+  color: #555;
+  white-space: pre-line;
+  font-family: var(--font-body-family); /* Corpo */
+}
+
+.sectionTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  font-family: var(--font-heading-family); /* Título */
+}
+
+.item {
+  margin-bottom: 16px;
+}
+
+.itemHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.itemTitle {
+  font-size: 1.15rem;
+  font-weight: 600;
+  font-family: var(--font-heading-family); /* Título */
+}
+
+.itemDate {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #777;
+  font-family: var(--font-body-family); /* Corpo */
+}
+
+.itemSubtitle {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 6px;
+  font-family: var(--font-body-family); /* Corpo */
+}
+
+.itemSubtitleLink {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--secondary-color);
+  margin-bottom: 6px;
+  word-break: break-all;
+  font-family: var(--font-body-family); /* Corpo */
+}
+
+.itemDesc {
+  font-size: 0.95rem;
+  color: #555;
+  white-space: pre-line;
+  font-family: var(--font-body-family); /* Corpo */
+}
+
+/* --- Barra Lateral --- */
+
+.contactList p {
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+  word-break: break-all;
+  font-family: var(--font-body-family); /* Corpo */
+}
+
+.skillsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill {
+  font-size: 0.9rem;
+  font-weight: 500;
+  background-color: #f0f0f0;
+  color: #444;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-family: var(--font-body-family); /* Corpo */
+}
+
+.languageList {
+  /* */
+}
+
+.language {
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+  font-family: var(--font-body-family); /* Corpo */
+}
+
+.language span {
+  color: #777;
+}

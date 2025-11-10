@@ -1,0 +1,86 @@
+.builderPage {
+  display: flex;
+  flex-direction: column; /* Mobile-First: colunas empilhadas */
+  width: 100%;
+  min-height: 100%;
+}
+
+/* Coluna do Formulário */
+.formColumn {
+  width: 100%;
+  padding: var(--spacing-lg);
+  background-color: var(--background-light);
+  order: 2; /* Formulário vem depois da pré-visualização no mobile */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--background-medium);
+}
+
+.title {
+  font-size: 1.75rem;
+  color: var(--text-color-primary);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Coluna da Pré-visualização */
+.previewColumn {
+  width: 100%;
+  padding: var(--spacing-lg);
+  background-color: var(--background-dark);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  order: 1; /* Pré-visualização vem primeiro no mobile */
+}
+
+.previewWrapper {
+  width: 100%;
+  max-width: 420px; /* Tamanho bom para A4 no mobile */
+  margin: 0 auto;
+  
+  /* Mantém a proporção A4 (210/297) */
+  aspect-ratio: 210 / 297; 
+
+  /* Adiciona escala para caber */
+  transform: scale(1); 
+  transform-origin: top center;
+  box-shadow: var(--shadow-lg);
+}
+
+/* Desktop: Layout de 2 colunas */
+@media (min-width: 1024px) {
+  .builderPage {
+    flex-direction: row; /* Layout lado a lado */
+    height: calc(100vh - 120px); /* Altura total (menos header/footer) */
+  }
+
+  .formColumn {
+    width: 50%;
+    order: 1; /* Formulário na esquerda */
+    overflow-y: auto; /* Scroll apenas no formulário */
+    padding: var(--spacing-xl);
+  }
+
+  .previewColumn {
+    width: 50%;
+    order: 2; /* Preview na direita */
+    overflow-y: auto; /* Scroll apenas no preview */
+    padding: var(--spacing-xl);
+    align-items: center;
+  }
+
+  .previewWrapper {
+    /* Ajusta a escala para caber bem na coluna */
+    max-width: none;
+    width: 100%; 
+    max-height: 100%;
+    transform: scale(0.7); /* Ajuste a escala conforme necessário */
+    transform-origin: center center;
+  }
+}

@@ -1,0 +1,27 @@
+.formGroup {
+  margin-bottom: var(--spacing-md);
+  width: 100%;
+}
+
+.label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-color-secondary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.input {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--background-medium);
+  border-radius: var(--border-radius-sm);
+  font-size: 1rem;
+  color: var(--text-color-primary);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px var(--accent-color);
+}

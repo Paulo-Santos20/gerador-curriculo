@@ -1,0 +1,148 @@
+.classic {
+  width: 100%;
+  height: 100%;
+  padding: 24px;
+  color: #222;
+  background-color: #ffffff;  
+  font-family: var(--font-body-family);
+  font-size: var(--font-size-body); 
+}
+
+.header {
+  text-align: center;
+  border-bottom: 3px solid #ddd;
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.name {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 4px;
+  font-family: var(--font-heading-family); 
+  font-size: var(--font-size-name);
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #444;
+  margin-bottom: 12px;
+  font-family: var(--font-heading-family); 
+  font-size: var(--font-size-item-title);
+}
+
+.contactInfo,
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 4px;
+  font-family: var(--font-body-family); 
+  font-size: var(--font-size-body);
+}
+
+.links {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.sectionTitle {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 4px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  font-family: var(--font-heading-family); 
+  font-size: var(--font-size-section-title);
+}
+
+.summary {
+  font-size: 1rem;
+  white-space: pre-line;
+  font-family: var(--font-body-family); 
+  font-size: var(--font-size-section-title);
+}
+
+.item {
+  margin-bottom: 16px;
+}
+
+.itemHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2px;
+}
+
+.itemTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  font-family: var(--font-heading-family); /* Título */
+}
+
+.itemDate {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #666;
+  font-family: var(--font-body-family); /* Corpo */
+}
+
+.itemSubtitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 6px;
+  font-family: var(--font-body-family); /* Corpo */
+}
+
+.itemSubtitleLink {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 6px;
+  word-break: break-all;
+  font-family: var(--font-body-family); /* Corpo */
+}
+
+.itemDesc {
+  font-size: 0.95rem;
+  color: #333;
+  white-space: pre-line;
+  font-family: var(--font-body-family); /* Corpo */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.list {
+  list-style-position: inside;
+  font-size: 1rem;
+  font-family: var(--font-body-family); 
+  font-size: var(--font-size-body);
+}
+
+.list li {
+  margin-bottom: 4px;
+}
+
+.itemDate,
+.itemSubtitle,
+.itemSubtitleLink,
+.itemDesc {
+  font-family: var(--font-body-family);
+  font-size: var(--font-size-body); 
+}

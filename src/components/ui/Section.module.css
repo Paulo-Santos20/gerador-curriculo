@@ -1,0 +1,44 @@
+.section {
+  background-color: var(--surface-color);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--background-medium);
+}
+
+.summary {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-color-primary);
+  padding: var(--spacing-md) var(--spacing-lg);
+  cursor: pointer;
+  list-style: none; /* Remove a seta padrão */
+}
+
+.summary::-webkit-details-marker {
+  display: none; /* Remove a seta padrão (Chrome) */
+}
+
+.summary {
+  position: relative;
+}
+
+/* Adiciona uma seta customizada */
+.summary::after {
+  content: '+';
+  position: absolute;
+  right: var(--spacing-lg);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--secondary-color);
+}
+
+.section[open] > .summary::after {
+  content: '−';
+}
+
+.content {
+  padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
+  border-top: 1px solid var(--background-medium);
+}

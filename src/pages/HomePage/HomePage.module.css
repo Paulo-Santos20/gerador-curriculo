@@ -1,0 +1,103 @@
+.homePage {
+  padding: var(--spacing-xl) var(--spacing-lg);
+  background-color: var(--background-light);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--text-color-primary);
+  margin-bottom: var(--spacing-xl);
+}
+
+.templateGrid {
+  display: grid;
+  grid-template-columns: 1fr; /* Mobile-First: 1 coluna */
+  gap: var(--spacing-lg);
+}
+
+/* --- ÁREA DE PRÉ-VISUALIZAÇÃO (ATUALIZADA) --- */
+
+.previewPlaceholder {
+  height: 220px;
+  background-color: var(--background-medium);
+  border-bottom: 1px solid var(--background-medium);
+  overflow: hidden; /* Isso é crucial para conter o template escalado */
+  position: relative;
+}
+
+.previewWrapper {
+  /* Os templates são desenhados em tamanho A4 (aprox. 794x1123px) */
+  /* Nós os renderizamos grandes e depois diminuímos */
+  width: 794px; /* Largura A4 a 96dpi */
+  height: 1123px; /* Altura A4 a 96dpi */
+  transform-origin: top left;
+  
+  /* Cálculo da escala: 
+    Altura do placeholder (220px) / Altura real do template (1123px) 
+    = 0.1958 
+  */
+  transform: scale(0.1958);
+  
+  /* Isso garante que o template renderize como se estivesse na página de impressão */
+  position: absolute;
+  top: 0;
+  left: 50%;
+  /* Centraliza o template escalado horizontalmente */
+  margin-left: calc( (794px * 0.1958) / -2 ); 
+}
+
+/* --- Fim da Pré-visualização --- */
+
+
+.cardContent {
+  padding: var(--spacing-lg);
+}
+
+.cardContent h3 {
+  font-size: 1.25rem;
+  color: var(--primary-color);
+}
+
+.cardContent p {
+  font-size: 0.9rem;
+  color: var(--text-color-secondary);
+  margin-bottom: var(--spacing-md);
+  min-height: 40px; /* Garante altura consistente */
+}
+
+.selectButton {
+  width: 100%;
+  padding: var(--spacing-md);
+  background-color: var(--secondary-color);
+  color: var(--text-color-light);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.selectButton:hover {
+  background-color: var(--primary-color);
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .templateGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .templateGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

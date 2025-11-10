@@ -1,0 +1,55 @@
+/* Layout em grade para formulários (ex: Info Pessoal) */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Mobile-First */
+  gap: 0 var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr 1fr; /* 2 colunas */
+  }
+  
+  /* Faz um item ocupar 2 colunas (se necessário) */
+  .gridFull {
+    grid-column: 1 / -1;
+  }
+}
+
+
+/* Estilos para itens dinâmicos (Experiência, Educação, etc.) */
+.itemContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.item {
+  position: relative;
+  border: 1px solid var(--background-medium);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg);
+  padding-top: var(--spacing-xl); /* Espaço para o botão de remover */
+  background-color: #fafafa;
+}
+
+.removeButton {
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  background: none;
+  border: none;
+  color: var(--danger-color);
+  cursor: pointer;
+}
+.removeButton:hover {
+  opacity: 0.7;
+}
+
+/* Para seções de 1 input (Skills, Languages) */
+.simpleItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
